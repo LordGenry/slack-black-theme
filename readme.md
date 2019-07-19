@@ -1,13 +1,53 @@
-# Slack Black Theme
+# One Dark Theme for Slack
 
-A darker, more contrasty, Slack theme.
+Atom One Dark Theme for Slack!
 
 # Preview
 
-![Screenshot](https://cloud.githubusercontent.com/assets/7691630/24120350/4cbb643e-0d82-11e7-8353-5d4eb65dfd6a.png)
+![Screenshot](preview.png)
+
+# Pledge
+
+If you like this plugin, you can buy me a beer (or a coffee, or something else) using [PayPal](https://paypal.me/mallowigi?locale.x=en_US)
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/material-theme-jetbrains#backer)]
+
+<a href="https://opencollective.com/material-theme-jetbrains#backers" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/backers.svg?width=890"></a>
+
+Check also : http://www.material-theme.com/docs/support-us/
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/material-theme-jetbrains#sponsor)]
+
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/0/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/1/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/2/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/3/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/4/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/5/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/6/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/7/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/8/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/material-theme-jetbrains/sponsor/9/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/9/avatar.svg"></a>
+
 
 # Installing into Slack
 
+### For Slack > 4.0
+
+- Clone this repository
+- Install NodeJS if you didn't do it yet (<>https://nodejs.org/en/download/</>)
+- Run `npm install`
+- Run `npm run apply`
+- Select **Apply** in the menu
+- Open or Restart Slack
+- ??????
+- PROFIT!!!!!!
+
+### For Slack < 4.0
 Find your Slack's application directory.
 
 * Windows: `%homepath%\AppData\Local\slack\`
@@ -16,7 +56,7 @@ Find your Slack's application directory.
 
 
 Open up the most recent version (e.g. `app-2.5.1`) then open
-`resources\app.asar.unpacked\src\static\index.js`
+`resources\app.asar.unpacked\src\static\ssb-interop.js`
 
 For versions after and including `3.0.0` the same code must be added to the following file
 `resources\app.asar.unpacked\src\static\ssb-interop.js`
@@ -31,17 +71,47 @@ document.addEventListener("DOMContentLoaded", function() {
    let webviews = document.querySelectorAll(".TeamView webview");
 
    // Fetch our CSS in parallel ahead of time
-   const cssPath = 'https://cdn.rawgit.com/widget-/slack-black-theme/master/custom.css';
+   const cssPath = 'https://raw.githubusercontent.com/mallowigi/slack-one-dark-theme/master/custom.css';
    let cssPromise = fetch(cssPath).then(response => response.text());
 
    let customCustomCSS = `
    :root {
       /* Modify these to change your theme colors: */
-      --primary: #09F;
-      --text: #CCC;
-      --background: #080808;
-      --background-elevated: #222;
-   }
+     --primary: #E5C17C;
+     --accent: #568AF2;
+     --text: #ABB2BF;
+     --background: #282C34;
+     --background-elevated: #3B4048;
+
+     /* These should be less important: */
+     --background-hover: lighten(#3B4048, 10%);
+     --background-light: #AAA;
+     --background-bright: #FFF;
+
+     --border-dim: #666;
+     --border-bright: var(--primary);
+
+     --text-bright: #FFF;
+     --text-dim: #555c69;
+     --text-special: var(--primary);
+     --text-accent: var(--text-bright);
+
+     --scrollbar-background: #000;
+     --scrollbar-border: var(--primary);
+
+     --yellow: #fc0;
+     --green: #98C379;
+     --cyan: #56B6C2;
+     --blue: #61AFEF;
+     --purple: #C678DD;
+     --red: #E06C75;
+     --red2: #BE5046;
+     --orange: #D19A66;
+     --orange2: #E5707B;
+     --gray: #3E4451;
+     --silver: #9da5b4;
+     --black: #21252b;
+      }
    `
 
    // Insert a style tag into the wrapper view
@@ -120,61 +190,18 @@ Here's some example color variations you might like.
 --background-elevated: #114;
 ```
 
-## Hot Dog Stand
-![Hot Dog Stand](https://cloud.githubusercontent.com/assets/7691630/24120351/4cca6182-0d82-11e7-8de8-7ab99dcde042.png)
-```
---primary: #000;
---text: #FFF;
---background: #F00;
---background-elevated: #FF0;
-```
-
 # Development
 
-`git clone` the project and `cd` into it.
+## Inspect
 
-Change the CSS URL to `const cssPath = 'http://localhost:8080/custom.css';`
+Open Slack on the browser. It has the useful Developer Tools available to them so you can debug with ease.
 
-Run a static webserver of some sort on port 8080:
+To test your CSS, install a Stylish-like extension (https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en) then create
+a new style for slack and paste the CSS inside and save.
 
-```bash
-npm install -g static
-static .
-```
+# Acknowledgements
 
-In addition to running the required modifications, you will likely want to add auto-reloading:
-
-```js
-const cssPath = 'http://localhost:8080/custom.css';
-const localCssPath = '/Users/bryankeller/Code/slack-black-theme/custom.css';
-
-window.reloadCss = function() {
-   const webviews = document.querySelectorAll(".TeamView webview");
-   fetch(cssPath + '?zz=' + Date.now(), {cache: "no-store"}) // qs hack to prevent cache
-      .then(response => response.text())
-      .then(css => {
-         console.log(css.slice(0,50));
-         webviews.forEach(webview =>
-            webview.executeJavaScript(`
-               (function() {
-                  let styleElement = document.querySelector('style#slack-custom-css');
-                  styleElement.innerHTML = \`${css}\`;
-               })();
-            `)
-         )
-      });
-};
-
-fs.watchFile(localCssPath, reloadCss);
-```
-
-Instead of launching Slack normally, you'll need to enable developer mode to be able to inspect things.
-
-* Mac: `export SLACK_DEVELOPER_MENU=true; open -a /Applications/Slack.app`
-
-* Linux: (todo)
-
-* Windows: (todo)
+Thanks to https://github.com/widget-/slack-black-theme for the idea!
 
 # License
 
